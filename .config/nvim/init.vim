@@ -38,7 +38,7 @@ Plug 'vim-scripts/indexer.tar.gz'
 Plug 'vim-scripts/a.vim'
 
 " debugger for neovim
-Plug 'huawenyu/neogdb.vim'
+Plug 'sakhnik/nvim-gdb'
 
 call plug#end()
 
@@ -74,6 +74,9 @@ set smarttab
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
+
+" Use airline powerline fonts
+let g:airline_powerline_fonts = 1
 
 " ==============================================================================
 "                                  TABS
@@ -118,14 +121,34 @@ vnoremap ; $
 vnoremap <C-b> :BC<CR>
 nnoremap <C-b> <S-V>:BC<CR>
 
+" map control-backspace to delete the previous word
+noremap! <C-BS> <C-w>
+noremap! <C-h> <C-w>
+
+" Search for visually selected text
+vnorem // y/<C-r>"<CR>
+
+" Remaps increment/decrement command to Alt-=/Alt--
+nnoremap <A-=> <C-a>
+nnoremap <A--> <C-x>
+
+" Move between Windows with Alt + Arrow Keys
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR><Paste>
+
+" Remap Ctrl A
+map <C-a> <Esc>ggvG$
+
 "========================================
 "                Folds
 "========================================
 set foldmethod=syntax
 set foldnestmax=2
 
-autocmd BufWinLeave *.* mkview!
-autocmd BufWinEnter *.* silent loadview
+" autocmd BufWinLeave *.* mkview!
+" autocmd BufWinEnter *.* silent! loadview
 
 "========================================
 "                Folds
@@ -141,6 +164,9 @@ set smartcase
 
 " Highlight search results
 set hlsearch
+
+" Open all folds by default
+set nofoldenable
 
 
 "========================================

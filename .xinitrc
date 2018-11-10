@@ -50,17 +50,17 @@ fi
 
 # Set up the god damned (first?) second monitor
 xrandr --output HDMI1 --auto --right-of DVI-D-0
-xrandr --newmode "1920x1080_60.00"  148.50  1920 2008 2052 2200  1080 1084 1089 1125 -hsync +vsync
-xrandr --addmode HDMI1 1920x1080_60.00
-xrandr --output HDMI1 --mode 1920x1080_60.00
+# xrandr --newmode "1920x1080_60.00"  148.50  1920 2008 2052 2200  1080 1084 1089 1125 -hsync +vsync
+# xrandr --addmode HDMI1 1920x1080_60.00
+# xrandr --output HDMI1 --mode 1920x1080_60.00
 
 # turn off the stupid virtual monitors (why did I even buy them)
-xrandr --output DP-1 --off
-xrandr --output DP-3 --off
-xrandr --output DP-5 --off
+# xrandr --output DP-1 --off
+# xrandr --output DP-3 --off
+# xrandr --output DP-5 --off
 
 # Fix screen tearing
-# nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
+nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
 # set the background
 feh --bg-fill ~/Desktop/background.jpg &
