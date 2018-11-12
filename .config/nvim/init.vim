@@ -14,6 +14,8 @@ Plug 'rbgrouleff/bclose.vim' " additional ranger.vim dependency
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
 " auto complete
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 
@@ -34,11 +36,15 @@ Plug 'vim-scripts/DfrankUtil'
 Plug 'vim-scripts/vimprj'
 Plug 'vim-scripts/indexer.tar.gz'
 
+" DWM for Vim
+Plug 'spolu/dwm.vim'
+
 " A - for switching between source and header files
 Plug 'vim-scripts/a.vim'
 
 " debugger for neovim
-Plug 'sakhnik/nvim-gdb'
+" Plug 'sakhnik/nvim-gdb'
+Plug 'huawenyu/neogdb.vim'
 
 call plug#end()
 

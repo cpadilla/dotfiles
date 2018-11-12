@@ -4,7 +4,7 @@
 #clickable_url = true
 #dynamic_title = true
 # font = Fira\ Code 14
-font = Hack Regular 12
+font = Hack Regular 12.6
 #fullscreen = true
 #geometry = 640x480
 #icon_name = terminal
@@ -45,76 +45,29 @@ scrollback_lines = 10000
 #cursor = #dcdccc
 #cursor_foreground = #dcdccc
 
-#foreground = #dcdccc
-#foreground_bold = #ffffff
-#background = #3f3f3f
-
-# 20% background transparency (requires a compositor)
-#background = rgba(63, 63, 63, 0.8)
-
 # If unset, will reverse foreground and background
-highlight = #2f2f2f
+highlight = #1C4C9C
 
 # Colors from color0 to color254 can be set
-[colors]
-
-# special
-# foreground      = #a8a19f
-# foreground_bold = #a8a19f
-# cursor          = #a8a19f
-# background      = rgba(27, 25, 24, 0.8)
-# 
-# # black
-# color0  = #1b1918
-# color8  = #766e6b
-# 
-# # red
-# color1  = #f22c40
-# color9  = #f22c40
-# 
-# # green
-# color2  = #5ab738
-# color10 = #5ab738
-# 
-# # yellow
-# color3  = #d5911a
-# color11 = #d5911a
-# 
-# # blue
-# color4  = #407ee7
-# color12 = #407ee7
-# 
-# # magenta
-# color5  = #6666ea
-# color13 = #6666ea
-# 
-# # cyan
-# color6  = #00ad9c
-# color14 = #00ad9c
-# 
-# # white
-# color7  = #a8a19f
-# color15 = #f1efee
 [colors]
 
 # special
 foreground      = #29B4E1
 #foreground_bold = #50BEDF
 cursor          = #FCEF0A
+#cursor_foreground = #dcdccc
 # background      = #000000
 background      = rgba(0, 0, 0, 0.8)
 
 # black
-color0  = #0000ee
+color0  = #FCEF0A
 color8  = #0066ff
 
 # red
-# color1  = #00f4ff
 color1  = #6FFFFB
 color9  = #9999ff
 
 # green
-# color2  = #0099cc
 color2  = #FCEF0A
 color10 = #00ccff
 
@@ -123,12 +76,11 @@ color3  = #3366cc
 color11 = #D3323D
 
 # blue
-# color4  = #0D385B
-color4  = #EC00FF
+color4  = #B967FF
 color12 = #0099cc
 
 # magenta
-color5  = #0066ff
+color5 = #05FFA1
 color13 = #0099ff
 
 # cyan
@@ -136,7 +88,25 @@ color6 = #00EEFF
 color14  = #00FFFF
 
 # white
-color7  = #99cccc
+color7  = #1C4C9C
+color15 = #4C4C4C
+
+# color130 = #00C5FF
+color130 = #D3C90E
+
+
+[hints]
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#active_foreground = #e68080
+#active_background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
+
+# vim: ft=dosini cms=#%
 color15 = #4C4C4C
 
 # color130 = #00C5FF
