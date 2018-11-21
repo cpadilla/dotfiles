@@ -37,22 +37,29 @@ Plug 'vim-scripts/vimprj'
 Plug 'vim-scripts/indexer.tar.gz'
 
 " DWM for Vim
-Plug 'spolu/dwm.vim'
+" Plug 'spolu/dwm.vim'
 
 " A - for switching between source and header files
 Plug 'vim-scripts/a.vim'
 
 " debugger for neovim
-" Plug 'sakhnik/nvim-gdb'
+" Plug 'sakhnik/nvim-gdb', { 'do': './install.sh' }
 Plug 'huawenyu/neogdb.vim'
 
 call plug#end()
 
 " Plugin settings
 
+" Notes
+let g:notes_directories = ['~/notes']
+let g:notes_suffix = '.note'
+
 " Use ranger when opening a directory
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
+
+" Change the color of YouCompleteMe autocomplete
+highlight Pmenu ctermfg=0 ctermbg=15 guifg=#ffffff guibg=#000000
 
 "========================================
 "                Settings
@@ -120,8 +127,7 @@ com -range=% -nargs=0 BC :<line1>,<line2>call BC()
 "========================================
 "                Remaps
 "========================================
-nnoremap ; $
-vnoremap ; $
+map ; $
 
 " map Ctrl+b to call BC() which pipes the current line or selection to BC
 vnoremap <C-b> :BC<CR>
@@ -151,7 +157,7 @@ map <C-a> <Esc>ggvG$
 "                Folds
 "========================================
 set foldmethod=syntax
-set foldnestmax=2
+" set foldnestmax=2
 
 " autocmd BufWinLeave *.* mkview!
 " autocmd BufWinEnter *.* silent! loadview
@@ -160,7 +166,7 @@ set foldnestmax=2
 "                Folds
 "========================================
 " Ignorecase when searching
-set ignorecase
+" set ignorecase
 
 " incremental search - Vim starts searching when we start typing
 set incsearch

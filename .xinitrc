@@ -81,24 +81,28 @@ xset fp+ /usr/share/fonts/Twitter\ Color\ Emoji
 # Start xcompmgr
 xcompmgr &
 
-# Start keybinder
-xbindkeys &
-
-# Statusbar loop
-while true; do
-	# xsetroot -name "$( date +"%F  |  %r")"
-	dwmstatus
-	# sleep 1s  # Update time every minute
-done &
-
-# Syncronize clipboards
-# autocutsel -fork  &
-# autocutsel -selection PRIMARY -fork  &
+sleep 2s
 
 # Startup programs
 slack &
 discord &
 spotify &
+
+sleep 2s
+
+# Start keybinder
+xbindkeys &
+
+# Syncronize clipboards
+# autocutsel -fork  &
+# autocutsel -selection PRIMARY -fork  &
+
+# Statusbar loop
+while true; do
+	# xsetroot -name "$( date +"%F  |  %r")"
+	dwmstatus
+	sleep 1s  # Update time every minute
+done &
 
 # Start dwm
 while true; do

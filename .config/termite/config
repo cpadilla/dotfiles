@@ -4,7 +4,7 @@
 #clickable_url = true
 #dynamic_title = true
 # font = Fira\ Code 14
-font = Hack Regular 12.6
+font = Hack Regular 12
 #fullscreen = true
 #geometry = 640x480
 #icon_name = terminal
@@ -60,7 +60,8 @@ cursor          = #FCEF0A
 background      = rgba(0, 0, 0, 0.8)
 
 # black
-color0  = #FCEF0A
+# FCEF0A
+color0  = #1d1f21
 color8  = #0066ff
 
 # red
