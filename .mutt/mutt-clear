@@ -1,0 +1,13 @@
+color normal	default default
+color attachment brightyellow default
+color hdrdefault cyan default
+color indicator black color2
+color markers	brightred default
+color quoted	green default
+color signature cyan default
+color status	color0 color10
+color tilde	blue default
+color tree	red default
+
+color index	red default ~D
+color index	magenta default ~T
