@@ -43,7 +43,10 @@
 			},
 			{
 				"function": "powerline.segments.common.time.date",
-				"priority": 60
+				"priority": 60,
+                "args": {
+                    "format": "%I:%M:%S %p"
+                }
 			},
 			{
 				"function": "powerline.segments.common.players.dbus_player",
