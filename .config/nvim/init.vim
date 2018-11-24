@@ -156,15 +156,14 @@ map <C-a> <Esc>ggvG$
 "========================================
 "                Folds
 "========================================
+hi Folded ctermbg=0
+
 set foldmethod=syntax
 " set foldnestmax=2
 
 " autocmd BufWinLeave *.* mkview!
 " autocmd BufWinEnter *.* silent! loadview
 
-"========================================
-"                Folds
-"========================================
 " Ignorecase when searching
 " set ignorecase
 
