@@ -1,0 +1,40 @@
+#!/usr/bin/fish
+
+set TIME (printf "6h\n7h\n8h" | dmenu -p "Sleep for:");
+
+find ~/Music/Music/ -name "*.mp3" -o -name "*.m4a" | sed -n "s/\/home\/chris\/Music\/Music\///p" > /home/chris/Music/songs.txt
+
+set SONG (cat /home/chris/Music/songs.txt | dmenu -l 10 -i -p "Play Song:");
+
+if set -q $SONG
+	exit
+else
+	while true
+
+		# Sleep
+		sleep $TIME;
+
+		# Unset TIME
+		set -e TIME
+
+		# Play song
+		# --player-operation-mode=pseudo-gui
+		mpv "/home/chris/Music/Music/"$SONG --audio-device=pulse/alsa_output.pci-0000_00_1f.3.analog-stereo --loop-file & set TIME (printf "No\n5m\n10m\n15m\n" | dmenu -i -p "Snooze?:");
+
+		# Stop Song
+		killall mpv
+
+		# Turn off alarm if not snoozing
+		if set -q $TIME
+			exit
+		else
+			if [ $TIME = "No" ]
+				echo NO
+				exit
+			end
+			equal
+
+		end
+	end
+end
+

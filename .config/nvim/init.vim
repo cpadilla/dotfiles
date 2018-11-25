@@ -130,8 +130,8 @@ com -range=% -nargs=0 BC :<line1>,<line2>call BC()
 map ; $
 
 " map Ctrl+b to call BC() which pipes the current line or selection to BC
-vnoremap <C-b> :BC<CR>
-nnoremap <C-b> <S-V>:BC<CR>
+vnoremap + :BC<CR>
+nnoremap + <S-V>:BC<CR>
 
 " map control-backspace to delete the previous word
 noremap! <C-BS> <C-w>
@@ -156,15 +156,14 @@ map <C-a> <Esc>ggvG$
 "========================================
 "                Folds
 "========================================
+hi Folded ctermbg=0
+
 set foldmethod=syntax
 " set foldnestmax=2
 
 " autocmd BufWinLeave *.* mkview!
 " autocmd BufWinEnter *.* silent! loadview
 
-"========================================
-"                Folds
-"========================================
 " Ignorecase when searching
 " set ignorecase
 

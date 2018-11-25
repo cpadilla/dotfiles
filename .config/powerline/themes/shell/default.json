@@ -47,16 +47,7 @@
                 "args": {
                     "format": "%I:%M:%S %p"
                 }
-			},
-			{
-				"function": "powerline.segments.common.players.dbus_player",
-				"priority": 80,
-                "name": "player"
-            },
-			{
-				"function": "powerline.segments.common.wthr.weather",
-				"priority": 90
-            }
+			}
 		]
 	}
 }

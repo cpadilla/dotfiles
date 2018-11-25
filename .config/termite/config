@@ -39,62 +39,51 @@ scrollback_lines = 10000
 # "off", "left" or "right"
 #scrollbar = off
 
-[colors]
-# If both of these are unset, cursor falls back to the foreground color,
-# and cursor_foreground falls back to the background color.
-#cursor = #dcdccc
-#cursor_foreground = #dcdccc
-
-# If unset, will reverse foreground and background
-highlight = #1C4C9C
-
 # Colors from color0 to color254 can be set
 [colors]
 
+highlight = #2d2f31
+
 # special
-foreground      = #29B4E1
-#foreground_bold = #50BEDF
+foreground      = #29b4e1
+foreground_bold = #29b4e1
 cursor          = #FCEF0A
-#cursor_foreground = #dcdccc
-# background      = #000000
+cursor_foreground = #1d1f21
 background      = rgba(0, 0, 0, 0.8)
 
 # black
-# FCEF0A
 color0  = #1d1f21
-color8  = #0066ff
+color8  = #3a3f44
 
 # red
-color1  = #6FFFFB
-color9  = #9999ff
+color1  = #00EEFF
+color9  = #e72833
 
 # green
-color2  = #FCEF0A
-color10 = #29B4E1
+color2  = #fcef0a
+color10 = #e8d10a
 
 # yellow
-color3  = #3366cc
-color11 = #D3323D
+color3  = #6ffffb
+color11 = #00ffff
 
 # blue
-color4  = #B967FF
+color4  = #176b91
 color12 = #0099cc
 
 # magenta
-color5 = #05FFA1
-color13 = #0099ff
+color5  = #05ffa1
+color13 = #00ffcc
 
 # cyan
-color6 = #00EEFF
-color14  = #00FFFF
+color6  = #00eeff
+color14 = #00ffff
 
 # white
-color7  = #1C4C9C
-color15 = #4C4C4C
+color7  = #2d2f31
+color15 = #3e6fc1
 
-# color130 = #00C5FF
 color130 = #D3C90E
-
 
 [hints]
 #font = Monospace 12
@@ -108,11 +97,6 @@ color130 = #D3C90E
 #roundness = 2.0
 
 # vim: ft=dosini cms=#%
-color15 = #4C4C4C
-
-# color130 = #00C5FF
-color130 = #D3C90E
-
 
 [hints]
 #font = Monospace 12
