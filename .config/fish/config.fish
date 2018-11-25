@@ -14,7 +14,7 @@ end
 
 function fish_greeting
     set -g -x NAME 'クリストファー'
-    screenfetch -w
     powerline-setup
+    neofetch
 end
 

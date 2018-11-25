@@ -1,0 +1,4 @@
+#!/bin/fish
+notify-send --urgency=critical "Critical Urgency" "This is a test for a critical urgency notification."
+notify-send --urgency=normal "Normal Urgency" "This is a test for a normal urgency notification."
+notify-send --urgency=low "Low Urgency" "This is a test for a low urgency notification."
