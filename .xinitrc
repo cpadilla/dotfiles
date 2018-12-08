@@ -8,15 +8,7 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
-
-
-
-
-
-
-
     xrdb -merge $sysresources
-
 fi
 
 if [ -f $sysmodmap ]; then
@@ -24,15 +16,7 @@ if [ -f $sysmodmap ]; then
 fi
 
 if [ -f "$userresources" ]; then
-
-
-
-
-
-
-
     xrdb -merge "$userresources"
-
 fi
 
 if [ -f "$usermodmap" ]; then
@@ -81,21 +65,15 @@ xset fp+ /usr/share/fonts/Twitter\ Color\ Emoji
 # Start xcompmgr
 xcompmgr &
 
-sleep 2s
-
 # Startup programs
+dunst &
 slack &
 discord &
 spotify &
-
-sleep 2s
+termite -e /mnt/x/Documents/GitHub/MusicBot/run.sh &
 
 # Start keybinder
 xbindkeys &
-
-# Syncronize clipboards
-# autocutsel -fork  &
-# autocutsel -selection PRIMARY -fork  &
 
 # Statusbar loop
 while true; do

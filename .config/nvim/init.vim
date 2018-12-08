@@ -14,8 +14,6 @@ Plug 'rbgrouleff/bclose.vim' " additional ranger.vim dependency
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
 " auto complete
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 
@@ -50,10 +48,6 @@ call plug#end()
 
 " Plugin settings
 
-" Notes
-let g:notes_directories = ['~/notes']
-let g:notes_suffix = '.note'
-
 " Use ranger when opening a directory
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
@@ -71,6 +65,9 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 " Notification after file change
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+" Hide markdown syntax
+set cole=3
 
 " disable wrapping of long lines into multiple lines
 set nowrap
