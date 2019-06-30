@@ -114,7 +114,8 @@ set nowb
 " currently doesn't support multiple lines
 " because of ^M somewhere along the way
 function BC() range
-    let ans = system('echo scale=6\;'.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| bc -l')
+    " let ans = system('echo scale=6\;'.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| bc -l')
+    let ans = system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| bc -l')
     normal '>
     put ='=='
     put =ans

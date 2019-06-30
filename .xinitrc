@@ -32,17 +32,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# Set up the god damned (first?) second monitor
-xrandr --output HDMI1 --auto --right-of DVI-D-0
-# xrandr --newmode "1920x1080_60.00"  148.50  1920 2008 2052 2200  1080 1084 1089 1125 -hsync +vsync
-# xrandr --addmode HDMI1 1920x1080_60.00
-# xrandr --output HDMI1 --mode 1920x1080_60.00
-
-# turn off the stupid virtual monitors (why did I even buy them)
-# xrandr --output DP-1 --off
-# xrandr --output DP-3 --off
-# xrandr --output DP-5 --off
-
 # Fix screen tearing
 nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
@@ -66,14 +55,26 @@ xset fp+ /usr/share/fonts/Twitter\ Color\ Emoji
 xcompmgr &
 
 # Startup programs
+# fish start_jack.fish &
 dunst &
-slack &
+riot-desktop &
 discord &
 spotify &
-termite -e /mnt/x/Documents/GitHub/MusicBot/run.sh &
+cool-retro-term -e /mnt/x/Documents/GitHub/MusicBot/run.sh &
 
 # Start keybinder
 xbindkeys &
+
+# Start jack audio
+# jack_control start
+# jack_control ds alsa
+# jack_control dps device hw:Audio
+# jack_control dps rate 48000
+# jack_control dps nperiods 2
+# jack_control dps period 64
+# sleep 10
+# a2jmidid -e &
+pulseaudio --start &
 
 # Statusbar loop
 while true; do
@@ -81,6 +82,9 @@ while true; do
 	dwmstatus
 	sleep 1s  # Update time every minute
 done &
+
+# Set up screen layout
+xrandr --output DVI-D-0 --auto --output HDMI1 --auto --left-of DVI-D-0
 
 # Start dwm
 while true; do

@@ -96,15 +96,15 @@
   Mod4 + F3
 
 # open terminal
-"termite"
+"cool-retro-term"
   mod4 + t
 
 # open browser
-"chromium"
+"brave"
   mod4 + f
 
 # Win + E = ranger
-"termite -e ranger"
+"cool-retro-term -e ranger"
   mod4 + e
 
 # Remap Insert to Home
