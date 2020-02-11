@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/usr/home/chris'
+let g:netrw_dirhist_2='/usr/home/chris/.vim'
+let g:netrw_dirhist_1='/usr/home/chris'
+let g:netrw_dirhist_0='/usr/home/chris/.config/fish/functions'
+let g:netrw_dirhist_9='/usr/home/chris/.config/fish'
+let g:netrw_dirhist_8='/usr/home/chris/.config'
+let g:netrw_dirhist_7='/usr/home/chris'
+let g:netrw_dirhist_6='/usr/home/chris/.config/fish'
+let g:netrw_dirhist_5='/usr/home/chris/.config'
+let g:netrw_dirhist_4='/usr/home/chris'
