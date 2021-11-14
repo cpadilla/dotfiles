@@ -92,6 +92,9 @@ set list listchars=tab:\ \ ,trail:·
 " Use airline powerline fonts
 let g:airline_powerline_fonts = 1
 
+" Always use system clipboard
+set clipbaord+=unnamedplus
+
 " ==============================================================================
 "                                  TABS
 " ==============================================================================
