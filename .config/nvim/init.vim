@@ -44,6 +44,10 @@ Plug 'vim-scripts/a.vim'
 " Plug 'sakhnik/nvim-gdb', { 'do': './install.sh' }
 Plug 'huawenyu/neogdb.vim'
 
+" Search utility
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 call plug#end()
 
 " Plugin settings
@@ -150,6 +154,15 @@ nmap <silent> <A-Right> :wincmd l<CR><Paste>
 
 " Remap Ctrl A
 map <C-a> <Esc>ggvG$
+
+" Leader key shortcuts
+nnoremap <Leader>v :e $MYVIMRC<CR>
+
+" Silver searcher
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "========================================
 "                Folds
