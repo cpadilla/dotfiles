@@ -101,7 +101,7 @@ set list listchars=tab:\ \ ,trail:·
 let g:airline_powerline_fonts = 1
 
 " Always use system clipboard
-set clipbaord+=unnamedplus
+set clipboard+=unnamedplus
 
 " ==============================================================================
 "                                  TABS
