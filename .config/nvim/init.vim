@@ -17,13 +17,16 @@ endif
 " specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim' " additional ranger.vim dependency
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " auto complete
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 
 " ale - linter / autocompletion / formatter
 Plug 'w0rp/ale'
@@ -47,6 +50,7 @@ Plug 'vim-scripts/indexer.tar.gz'
 
 " A - for switching between source and header files
 Plug 'vim-scripts/a.vim'
+" Plug 'derekwyatt/vim-fswitch'
 
 " debugger for neovim
 " Plug 'sakhnik/nvim-gdb', { 'do': './install.sh' }
@@ -63,6 +67,28 @@ call plug#end()
 " Use ranger when opening a directory
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
+
+" Syntax highlighting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    custom_captures = {
+      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+      ["foo.bar"] = "Identifier",
+    },
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
 
 " Change the color of YouCompleteMe autocomplete
 highlight Pmenu ctermfg=0 ctermbg=15 guifg=#ffffff guibg=#000000
@@ -84,7 +110,7 @@ set cole=3
 " disable wrapping of long lines into multiple lines
 set nowrap
 
-set mouse=a
+set mouse=v
 set clipboard+=unnamedplus
 set nu
 
@@ -102,6 +128,9 @@ let g:airline_powerline_fonts = 1
 
 " Always use system clipboard
 set clipboard+=unnamedplus
+
+" Make fswitch work when headers and source files are in separate directories
+" au BufEnter *.h let b:fswitchdst = 'c,cpp,m,cc' | let b:fswitchlocs = 'reg:|include.*|src/**'
 
 " ==============================================================================
 "                                  TABS
@@ -174,6 +203,24 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" coc.nvim autocomplete
+" inoremap <silent><expr> <c-space> coc#refresh()
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Fswitch keymap
+" nnoremap <silent> <A-o> :FSHere<cr>
+" Go to header file using ctags
+nnoremap <silent> <A-o> :tag %<.h<cr>
 
 "========================================
 "                Folds
