@@ -14,3 +14,8 @@ To set up oh-my-posh, run
 ```
 oh-my-posh init fish --config '~/src/dotfiles/.poshthemes/blue-owl.omp.json' > ~/.config/fish/config.fish
 ```
+
+To install the fonts run
+```
+oh-my-posh font install
+```
