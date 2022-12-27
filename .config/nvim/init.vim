@@ -25,8 +25,13 @@ Plug 'rbgrouleff/bclose.vim' " additional ranger.vim dependency
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" auto complete
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+
+" Colorschemes
+Plug 'EdenEast/nightfox.nvim'
+Plug 'joshdick/onedark.vim'
+Plug 'Aryansh-S/fastdark.vim'
+Plug 'patstockwell/vim-monokai-tasty'
+Plug 'owickstrom/vim-colors-paramount'
 
 " ale - linter / autocompletion / formatter
 Plug 'w0rp/ale'
@@ -110,7 +115,7 @@ set cole=3
 " disable wrapping of long lines into multiple lines
 set nowrap
 
-set mouse=v
+set mouse=a
 set clipboard+=unnamedplus
 set nu
 
@@ -204,6 +209,9 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+" Telescope colorschemes
+:nnoremap <Leader>pp :lua require'telescope.builtin'.colorscheme{}<cr>
+
 " coc.nvim autocomplete
 " inoremap <silent><expr> <c-space> coc#refresh()
 " Use tab for trigger completion with characters ahead and navigate
@@ -296,3 +304,4 @@ nnoremap <C-e> <C-]>
 " CTAGS indexer
 let g:indexer_disableCtagsWarning = 1
 
+colorscheme fastdark
