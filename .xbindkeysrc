@@ -3,7 +3,7 @@
 # xbindkeys configuration #
 ###########################
 #
-# Version: 1.8.6
+# Version: 1.8.7
 #
 # If you edit this file, do not forget to uncomment any lines
 # that you change.
@@ -39,16 +39,29 @@
 
 # Examples of commands:
 
-"xbindkeys_show" 
-  control+shift + q
+# "xbindkeys_show" 
+  # control+shift + q
+
+# Media keys
+"playerctl -a volume 0.05+"
+  XF86AudioRaiseVolume
+  # 123
+
+"playerctl -a volume 0.05-"
+  XF86AudioLowerVolume
+  # 122
+
+"playerctl play-pause"
+  XF86AudioPlay
+  # 172
 
 # set directly keycode (here control + f with my keyboard)
-# "xterm"
-#  c:41 + m:0x4
+"xterm"
+  c:41 + m:0x4
 
 # specify a mouse button
-#"xterm"
-#  control + b:2
+"xterm"
+  control + b:2
 
 #"xterm -geom 50x20+20+20"
 #   Shift+Mod2+alt + s
@@ -64,65 +77,6 @@
 ## Control + mouse button 2 release event starts rxvt
 #"rxvt"
 #  Control + b:2 + Release
-
-# Increase volume
-"amixer set Master 5%+"
-  XF86AudioRaiseVolume
-"amixer set Master 5%+"
-  Mod4 + F2
-
-# Lower volume
-"amixer set Master 5%-"
-  XF86AudioLowerVolume
-"amixer set Master 5%-"
-  Mod4 + F1
-
-# Play/Pause
-"playerctl play-pause"
-  XF86AudioPlay
-"playerctl play-pause"
-  Mod4 + F5
-
-# Next
-"playerctl next"
-  XF86AudioNext
-"playerctl next"
-  Mod4 + F4
-
-# Prev
-"playerctl prev"
-  XF86AudioPrev
-"playerctl prev"
-  Mod4 + F3
-
-# open terminal
-"cool-retro-term"
-  mod4 + t
-
-# open browser
-"brave"
-  mod4 + f
-
-# Win + E = ranger
-"cool-retro-term -e ranger"
-  mod4 + e
-
-# Remap Insert to Home
-"xdotool key Home"
-  Insert + release
-
-# lock screen
-"betterlockscreen -l blur"
-  mod4 + backslash
-
-# screenshot
-"scrot"
-  Print
-
-
-# dmenu
-# "dmenu_run"
-  # mod4 + Super_L + release
 
 ##################################
 # End of xbindkeys configuration #

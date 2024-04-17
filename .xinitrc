@@ -14,6 +14,7 @@ fi
 
 picom &
 xscreensaver &
+xbindkeys &
 while true; do
     volumeicon
 done &
