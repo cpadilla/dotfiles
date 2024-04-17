@@ -25,6 +25,8 @@ Plug 'rbgrouleff/bclose.vim' " additional ranger.vim dependency
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'Robitx/gp.nvim'
+Plug 'numToStr/Comment.nvim'
 
 " Colorschemes
 Plug 'EdenEast/nightfox.nvim'
@@ -67,7 +69,12 @@ Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
 
+" Somewhere after plug#end()
+:lua require('Comment').setup()
+
 " Plugin settings
+" GP.nvim plugin
+:lua require('gp').setup()
 
 " Use ranger when opening a directory
 let g:NERDTreeHijackNetrw = 0
@@ -112,11 +119,9 @@ autocmd FileChangedShellPost *
 " Hide markdown syntax
 set cole=3
 
-" disable wrapping of long lines into multiple lines
-set nowrap
+set wrap
 
 set mouse=a
-set clipboard+=unnamedplus
 set nu
 
 set expandtab
@@ -176,6 +181,22 @@ com -range=% -nargs=0 BC :<line1>,<line2>call BC()
 "========================================
 map ; $
 
+function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" map Tab to Control+n
+" inoremap <Tab> <c-n>
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+:verbose inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ CheckBackspace() ? "\<TAB>" :
+    \ coc#refresh()
+:verbose inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 " map Ctrl+b to call BC() which pipes the current line or selection to BC
 vnoremap + :BC<CR>
 nnoremap + <S-V>:BC<CR>
@@ -219,11 +240,11 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " no select by `"suggest.noselect": true` in your configuration file
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" inoremap <silent><expr> <TAB>
+      " \ coc#pum#visible() ? coc#pum#next(1) :
+      " \ CheckBackspace() ? "\<Tab>" :
+      " \ coc#refresh()
+" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Fswitch keymap
 " nnoremap <silent> <A-o> :FSHere<cr>
@@ -267,8 +288,12 @@ let g:ale_completion_enabled = 1
 let g:ale_cpp_clang_executable = 'clang++-5.0'
 
 " linter
- let g:ale_linters = {
-            \   'cpp': ['clang']
+let g:ale_linters = {
+            \   'cpp': ['clang'],
+            \   'rust': ['cargo', 'analyzer']
+            \}
+let g:ale_fixers = {
+            \ 'rust': ['cargo']
             \}
 let g:ale_cpp_clang_options = '-std=c++1z -O0 -Wextra -Wall -Wpedantic -I /usr/include/eigen3'
 "let g:ale_cpp_clangtidy_options = '-checks="cppcoreguidelines-*"'
