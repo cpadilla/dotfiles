@@ -45,15 +45,18 @@
 # Media keys
 "playerctl -a volume 0.05+"
   XF86AudioRaiseVolume
-  # 123
 
 "playerctl -a volume 0.05-"
   XF86AudioLowerVolume
-  # 122
 
 "playerctl play-pause"
   XF86AudioPlay
-  # 172
+
+"playerctl next"
+  XF86AudioNext
+
+"playerctl previous"
+  XF86AudioPrev
 
 # set directly keycode (here control + f with my keyboard)
 "xterm"
