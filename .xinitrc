@@ -23,8 +23,8 @@ eval $(feh --bg-fill /home/chris/Desktop/background.png)
 # Fix date time
 # ntpd &
 while true; do
-    xsetroot -name "$( date +"%r %A  %F")"
-    sleep 1s
+    xsetroot -name "$( date +"%T:%2N %A  %F")"
+    # sleep 1s
 done &
 
 
