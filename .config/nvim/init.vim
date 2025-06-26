@@ -17,9 +17,16 @@ endif
 " specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'puremourning/vimspector'
+Plug 'mason-org/mason.nvim'
+Plug 'mason-org/mason-lspconfig.nvim'
+
+Plug 'neovim/nvim-lspconfig' 
+Plug 'simrat39/rust-tools.nvim'
+
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim' " additional ranger.vim dependency
 Plug 'scrooloose/nerdtree'
@@ -76,6 +83,10 @@ call plug#end()
 " GP.nvim plugin
 :lua require('gp').setup()
 
+" -- Mason Setup
+:lua require("mason").setup({ ui = { icons = { package_installed = "", package_pending = "", package_uninstalled = "", }, } })
+:lua require("mason-lspconfig").setup()
+
 " Use ranger when opening a directory
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
@@ -85,22 +96,27 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    custom_captures = {
-      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-      ["foo.bar"] = "Identifier",
-    },
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
-EOF
+let g:vimspector_enable_mappings = 'HUMAN'
+packadd! vimspector
+syntax enable
+filetype plugin indent on
+
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   highlight = {
+"     enable = true,
+"     custom_captures = {
+"       -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+"       ["foo.bar"] = "Identifier",
+"     },
+"     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+"     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+"     -- Using this option may slow down your editor, and you may see some duplicate highlights.
+"     -- Instead of true it can also be a list of languages
+"     additional_vim_regex_highlighting = false,
+"   },
+" }
+" EOF
 
 " Change the color of YouCompleteMe autocomplete
 highlight Pmenu ctermfg=0 ctermbg=15 guifg=#ffffff guibg=#000000
@@ -138,6 +154,11 @@ let g:airline_powerline_fonts = 1
 
 " Always use system clipboard
 set clipboard+=unnamedplus
+
+" Spellchekc
+" set spell spelllang=en_us
+
+
 
 " Make fswitch work when headers and source files are in separate directories
 " au BufEnter *.h let b:fswitchdst = 'c,cpp,m,cc' | let b:fswitchlocs = 'reg:|include.*|src/**'
@@ -223,6 +244,7 @@ map <C-a> <Esc>ggvG$
 
 " Leader key shortcuts
 nnoremap <Leader>v :e $MYVIMRC<CR>
+nnoremap <Leader>j :lua vim.diagnostic.open_float()<CR>
 
 " Silver searcher
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
