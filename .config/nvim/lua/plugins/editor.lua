@@ -26,5 +26,6 @@ return {
 		}
 	},
     { 'nvim-treesitter/nvim-treesitter' },
-    { 'puremourning/vimspector' }
+    { 'puremourning/vimspector' },
+    { 'jghauser/follow-md-links.nvim' }
 }

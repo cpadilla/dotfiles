@@ -2,6 +2,9 @@
 --                Remaps
 --========================================
 
+vim.g.mapleader = "\\"
+vim.g.maplocalleader = "\\"
+
 vim.keymap.set('n', ';', '$')
 
 -- map Ctrl+b to call BC() which pipes the current line or selection to BC
@@ -42,6 +45,6 @@ nmap <F11> <cmd>call vimspector#StepOver()<cr>")
 nmap <F12> <cmd>call vimspector#StepOut()<cr>")
 nmap <F10> <cmd>call vimspector#StepInto()<cr>")
 ]])
-map('n', "Db", ":call vimspector#ToggleBreakpoint()<cr>")
-map('n', "Dw", ":call vimspector#AddWatch()<cr>")
-map('n', "De", ":call vimspector#Evaluate()<cr>")
+vim.keymap.set('n', "Db", ":call vimspector#ToggleBreakpoint()<cr>")
+vim.keymap.set('n', "Dw", ":call vimspector#AddWatch()<cr>")
+vim.keymap.set('n', "De", ":call vimspector#Evaluate()<cr>")

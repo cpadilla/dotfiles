@@ -3,14 +3,22 @@
 --   created by Christofer Padilla
 --========================================
 
+vim.g.mapleader = "\\"
+vim.g.maplocalleader = "\\"
+
 -- Load lazy.nvim
 require("config.lazy")
-
 require("lazy").setup("plugins")
+require("keys")
+
+vim.g.mapleader = "\\"
+vim.g.maplocalleader = "\\"
 
 --========================================
 --   		Plugins
 --========================================
+
+-- require'lspconfig'.ts_ls.setup {}
 
 -- Mason Setup
 require("mason").setup({
@@ -22,7 +30,65 @@ require("mason").setup({
         },
     }
 })
-require("mason-lspconfig").setup()
+
+require("mason-lspconfig").setup({
+  automatic_installation = false,
+  handlers = {
+    -- Disable default setup for ts_ls
+    ["tsserver"] = function() end,
+    ["ts_ls"] = function() end,
+  },
+})
+
+-- Force-load cmp-nvim-lsp to ensure capabilities are ready
+require("cmp_nvim_lsp")
+
+-- Completion Capabilities
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+local function on_attach(client, bufnr)
+  print("LSP attached: " .. client.name)
+end
+
+require("typescript-tools").setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    tsserver_file_preferences = {
+      includeInlayParameterNameHints = "all",
+      includeCompletionsForModuleExports = true,
+      quotePreference = "auto",
+    },
+    tsserver_format_options = {
+      allowIncompleteCompletions = false,
+      allowRenameOfImportPath = true,
+    },
+  },
+})
+
+require("lsp_signature").setup()
+
+-- LSP Diagnostics Config
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = false,
+    float = {
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
+    },
+})
+
+vim.cmd([[
+set signcolumn=yes
+autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+]])
+
+vim.cmd [[autocmd CompleteDone * lua print("Completion Done")]]
 
 local rt = require("rust-tools")
 
@@ -174,6 +240,9 @@ vim.opt.tabstop=4
 vim.opt.softtabstop=4
 vim.opt.shiftwidth=4
 vim.opt.smarttab=true
+
+-- Disable pause after pressing space
+vim.o.timeoutlen = 100
 
 -- Display tabs and trailing spaces visually
 vim.cmd([[set list listchars=tab:\ \ ,trail:·]])
