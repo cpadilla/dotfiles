@@ -3,6 +3,10 @@
 # Fix screen tearing
 # nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
+# xrandr
+# ~/.screenlayout/default.sh
+~/.screenlayout/virtualmonitors.sh
+
 xrdb ~/.Xresources
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
@@ -12,8 +16,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=picom
+
 picom &
-xscreensaver &
+xscreensaver --log xscreensaver.log &
 xbindkeys &
 while true; do
     volumeicon
@@ -28,6 +35,23 @@ while true; do
     # sleep 1s
 done &
 
+# Startup apps
+kdeconnectd &
+kdeconnect-app &
+ibus-daemon -drx &
+dunst &
+nm-applet &
+spotify &
+steam &
+discord &
+bitcoin-qt &
+electron-mail &
+pavucontrol &
+obsidian &
+docker-plex &
+docker-emby &
 
-# exec /home/chris/Downloads/dwm-6.4/dwm
-exec dwm
+# Start/restart dwm until you log out
+while [ -z "$DWM_EXIT" ]; do
+  dwm 2>~/.local/share/dwm.log
+done
